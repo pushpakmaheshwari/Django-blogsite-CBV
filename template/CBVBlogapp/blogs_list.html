@@ -1,0 +1,39 @@
+{% extends "CBVBlogapp/commonpage.html" %}
+{% block parentblock %}
+{% load static %}
+
+<title> View all blogs </title>
+<center><h1 style="color:dark"> View all blogs </h1> <br></center>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% if blogs_list %}
+
+<table border="2" class="container" class="table table-hover">
+  <tr>
+    <th>S.no</th> <th>Title</th> <th>Image</th> <th>Description</th> <th>Posted By</th> <th>Posted Date</th> <th> </th>
+  </tr>
+    {% for blogs in blogs_list %}
+  <tr>
+  <td>{{blogs.id}}</td>
+  <td><a href="/detail/{{blogs.id}}">{{blogs.Title}}</a></td>
+  <td> <img src={{blogs.pic.url}} height="80" width="100"> </td>
+  <td>{{blogs.Description | truncatechars:20}}</td>
+  <td> {{blogs.postedby}} </td>
+  <td>{{blogs.upload_date}}</td>
+  <td>
+  {% ifequal request.user.username blogs.postedby %}
+  <a href="/delete/{{blogs.id}}"><button type="button"><i class="fa fa-trash"></i> / <a href="/update/{{blogs.id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button></a> </td>
+  {%endifequal%}
+
+</tr>
+
+{% endfor %}
+</table>
+{% endif %}
+
+{% endblock %}
+
+
+<!--
+<td>{{blogs.Description | truncatechars:30}}</td>
+-->

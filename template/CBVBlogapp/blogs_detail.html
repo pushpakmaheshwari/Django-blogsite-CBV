@@ -1,0 +1,15 @@
+
+{% extends "CBVBlogapp/commonpage.html" %}
+{% block parentblock %}
+{% load static %}
+
+<title> Blog: {{blogs.Title}} </title>
+<class="container">
+<center><h1 style="color:Black"> {{blogs.Title}} </h1> <br></center>
+
+<h6 style="text-align:right">{{blogs.postedby}}</h6>
+<h6 style="text-align:right">{{blogs.upload_date}}</h6>
+
+<center> <img src={{blogs.pic.url}} height="200" width="300"> </center><br>
+<center><h3> {{blogs.Description}} </h3></center>
+{% endblock %}

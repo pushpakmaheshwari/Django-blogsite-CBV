@@ -1,0 +1,13 @@
+{% extends "CBVBlogapp/commonpage.html" %}
+{% block parentblock %}
+
+
+<form class="" method="post">
+{% csrf_token %}
+<center> <h2>Are you sure you want to delete blog '{{blogs.Title}}' ?</h2>
+<input type="submit" name="" value="Delete" class='btn btn-success'>
+</form>
+<a href="/viewallblogs" class='btn btn-success'>Cancel</a></center>
+
+
+{% endblock %}
