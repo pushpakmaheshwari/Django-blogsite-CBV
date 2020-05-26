@@ -19,6 +19,7 @@ from CBVBlogapp import views
 from django.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,7 @@ urlpatterns = [
     path('viewallblogs/', views.ViewallBlogs.as_view(),name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('signup/', views.SignupPage),
-    path('createnewblog/', views.CreateNewBlog.as_view()),
+    path('createnewblog/', login_required(views.CreateNewBlog.as_view())),
     path('update/<pk>', views.UpdateBlog.as_view()),
     path('delete/<pk>', views.DeleteBlog.as_view()),
 ]
